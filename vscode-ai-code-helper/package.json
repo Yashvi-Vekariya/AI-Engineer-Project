@@ -1,0 +1,80 @@
+{
+  "name": "ai-code-helper",
+  "displayName": "AI Code Helper",
+  "description": "AI-powered Python error fixing and code completion",
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "*"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "ai-code-helper.fixError",
+        "title": "AI: Fix Current Error",
+        "category": "AI Code Helper"
+      },
+      {
+        "command": "ai-code-helper.explainError",
+        "title": "AI: Explain Current Error",
+        "category": "AI Code Helper"
+      },
+      {
+        "command": "ai-code-helper.optimizeCode",
+        "title": "AI: Optimize Selected Code",
+        "category": "AI Code Helper"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "ai-code-helper.fixError",
+        "key": "ctrl+shift+f",
+        "mac": "cmd+shift+f",
+        "when": "editorHasSelection && editorLangId == python"
+      }
+    ],
+    "configuration": {
+      "title": "AI Code Helper",
+      "properties": {
+        "aiCodeHelper.apiKey": {
+          "type": "string",
+          "default": "",
+          "description": "Groq API Key for AI services"
+        },
+        "aiCodeHelper.model": {
+          "type": "string",
+          "default": "llama3-8b-8192",
+          "description": "AI Model to use (llama3-8b-8192, llama3-70b-8192, mixtral-8x7b-32768)"
+        },
+        "aiCodeHelper.autoFix": {
+          "type": "boolean",
+          "default": false,
+          "description": "Automatically suggest fixes for errors"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^16.18.126",
+    "@types/vscode": "^1.105.0",
+    "typescript": "^4.9.5"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "dotenv": "^16.6.1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
