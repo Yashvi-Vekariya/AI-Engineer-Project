@@ -1,0 +1,11 @@
+.venv
+# Ignore dependencies
+node_modules/
+# Ignore virtual environments
+venv/
+.env/
+__pycache__/
+*.pyc
+# Environment files
+.env
+*/.env
